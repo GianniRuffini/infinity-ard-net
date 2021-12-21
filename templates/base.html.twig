@@ -1,21 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinity A.R.D.Net</title>
-    
-    {% block stylesheets %}{% endblock %}
-</head>
-<body>
-    
+<html>
+    <head>
+        <meta charset="UTF-8">
 
-    {% block body %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    {% block footer %}{% endblock %}
-</body>
+        <title>
+            {% block title %}
+                Infinity A.R.D.Net
+            {% endblock %}
+        </title>
 
-    {% block javascripts %}{% endblock %}
-    
-</html>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+        <!-- fontawesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+        <!-- fontgoogle -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ asset( 'css/style.min.css') }}">
+
+        {# <link rel="stylesheet" href="{{ asset( 'css/styles.css') }}"> #}
+
+        {% block stylesheets %}{% endblock %}
+
+    </head>
+    <body>
+
+        {# Navbar #}
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid justify-content-end text-center" style="background-color:#eaeae1">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                ACCUEIL
+                                                            
+                                <span class="visually-hidden">
+                                    (current)
+                                                                
+                                </span>
+                            </a>
+                        </li>
+
+                        {# si on est connecter on affiche les routes dans le menus #}
+                        {% if is_granted('ROLE_USER') %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+                                    COMMUNAUTE
+                                                            
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">
+                                        KOTAETE (questions - réponses)
+                                                                        
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        MON ESPACE MEMBRE
+                                                                        
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        DECONNEXION
+                                                                        
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </li>
+
+                        <li class="ps-2 m-auto" style="display:inline-block;">
+
+                            <!-- User -->
+
+                            {# si on est connecter on affiche les icones dans le menus #}
+                                {% if is_granted('ROLE_USER') %}
+                                    <a class="icon1 btn btn-primary btn-floating m-1" href="{{ path('profile') }}" role="button"> <i class="fas fa-user"></i>
+                                </a>
+                            {% else %}
+                                <a class="icon1 btn btn-primary btn-floating m-1" href="{{ path('app_login') }}" role="button">
+                                    <i class="fas fa-user"></i>
+                                </a>
+                            {% endif %}
+
+                        <!-- liste de voyage -->
+
+                        
+                        </li>
+                        
