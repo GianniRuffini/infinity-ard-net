@@ -1,42 +1,88 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}
+    Log in!
+{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <form method="post">
+        {# si il y a une erreur on affiche le message #}
+        {% if error %}
+            <div class="alert alert-danger">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+        {# si on est connecter on affiche le message #}
+        {% if app.user %}
+            <div class="mb-3">
+                Vous êtes déjà connecter en tant que 
+                {{ app.user.username }}
+                , 
+                <a href="{{ path('app_logout') }}">
+                    Logout
+                </a>
+            </div>
+        {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+        <div class="container">
+            <div class="card mt-4 mb-4" style=" background-color: #f5f5ef; box-shadow: 5px 5px 15px rgba(0,0,0,0.9); text-align: center;">
+                <div class="log container my-3">
+                    <h1 class="conect mb-3 text-dark">
+                        SE CONNECTER
+                    </h1>
+                    <div class="row">
+                        <div class="col-12 col-md-4 col-lg-4 mt-4">
+                            <a href="#" class="nav-log" style="color:#bb362c">
+                                Se connecter
+                            </a>
+                        </div>
+                        {# si on est pas connecter on affiche les differentes routes  #}
+                        {% if not is_granted('ROLE_USER') %}
+                            <div class="col-12 col-md-4 col-lg-4 mt-4">
+                                <a href="{{ path('app_register') }}" class="nav-log" style="color:#bb362c">
+                                    Créer un nouveau compte
+                                </a>
+                            </div>
+                        {% endif %}
+                        <div class="col-12 col-md-4 col-lg-4 mt-4">
+                            <a href="{{ path('app_forgot_password_request') }}" class="nav-log" style="color:#bb362c">
+                                Réinitialiser votre mot de passe
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-12 mb-4 mt-4">
+                        <label for="inputEmail" class="my-3" style="color:#333333">
+                            Email*
+                        </label>
+                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                            <label for="inputPassword" class="my-3" style="color:#333333">
+                                Mot de passe*
+                            </label>
+                            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+                                <button class="btn-sm btn-secondary mt-3" style="background-color: #364449; color: white; font-weight: bold;" type="submit">
+                                    Connexion
+                                                            
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">{#
+                        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                        See https://symfony.com/doc/current/security/remember_me.html
+                
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" name="_remember_me"> Remember me
+                            </label>
+                        </div>
+                    #}
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
+            </form>
+        {% endblock %}
+        
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
-{% endblock %}

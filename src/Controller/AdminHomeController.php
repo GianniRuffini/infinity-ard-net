@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/admin/home')]
+#[Route('/admin')]
 class AdminHomeController extends AbstractController
 {
     #[Route('/', name: 'admin_home_index', methods: ['GET'])]

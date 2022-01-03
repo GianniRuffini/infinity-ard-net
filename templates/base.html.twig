@@ -31,66 +31,73 @@
     <body>
 
         {# Navbar #}
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container-fluid justify-content-end text-center" style="background-color:#eaeae1">
+        <nav class="navbar navbar-expand-lg navbar-light">
+<div class="container-fluid justify-content-end text-center" style="background-color:#ffffff">
+    
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-                <div class="collapse navbar-collapse" id="navbarColor02">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                ACCUEIL
-                                                            
-                                <span class="visually-hidden">
-                                    (current)
-                                                                
-                                </span>
-                            </a>
-                        </li>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('home') }}">
+                    ACCUEIL
+                                                
+                    <span class="visually-hidden">
+                        (current)
+                                                    
+                    </span>
+                </a>
+            </li>
 
-                        {# si on est connecter on affiche les routes dans le menus #}
-                        {% if is_granted('ROLE_USER') %}
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
-                                    COMMUNAUTE
-                                                            
-                                </a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">
-                                        KOTAETE (questions - réponses)
-                                                                        
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        MON ESPACE MEMBRE
-                                                                        
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        DECONNEXION
-                                                                        
-                                    </a>
-                                </div>
-                            {% endif %}
-                        </li>
+            {# si on est connecter on affiche les routes dans le menus #}
+            {% if is_granted('ROLE_USER') %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+                    COMMUNAUTE
+                                            
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">
+                        KOTAETE (questions - réponses)
+                                                        
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        MON ESPACE MEMBRE
+                                                        
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        DECONNEXION
+                                                        
+                    </a>
+                </div>
+                {% endif %}
+            </li>
 
-                        <li class="ps-2 m-auto" style="display:inline-block;">
+            <li class="ps-2 m-auto" style="display:inline-block;">
 
-                            <!-- User -->
+                <!-- User -->
 
-                            {# si on est connecter on affiche les icones dans le menus #}
-                                {% if is_granted('ROLE_USER') %}
-                                    <a class="icon1 btn btn-primary btn-floating m-1" href="{{ path('profile') }}" role="button"> <i class="fas fa-user"></i>
-                                </a>
-                            {% else %}
-                                <a class="icon1 btn btn-primary btn-floating m-1" href="{{ path('app_login') }}" role="button">
-                                    <i class="fas fa-user"></i>
-                                </a>
-                            {% endif %}
+                {# si on est connecter on affiche les icones dans le menus #}
+                    {% if is_granted('ROLE_USER') %}
+                        <a class="icon1 btn btn-primary btn-floating m-1" href="{{ path('profile') }}" role="button"> <i class="fas fa-user"></i>
+                    </a>
+                {% else %}
+                    <a class="icon1 btn btn-primary btn-floating m-1" href="{{ path('app_login') }}" role="button">
+                        <i class="fas fa-user"></i>
+                    </a>
+                {% endif %}
 
-                        <!-- liste de voyage -->
+            <!-- liste de voyage -->
 
-                        
-                        </li>
-                        
+            
+            </li>
+        </ul>
+    </div>
+{% block body %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block javascripts %}{% endblock %}
+
+            

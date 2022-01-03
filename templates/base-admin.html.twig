@@ -38,7 +38,7 @@
         {# sidebar #}
         <nav id="sidebar" class="sidebar js-sidebar">
             <div class="sidebar-content js-simplebar">
-                <a class="sidebar-brand" href="{{ path('admin_dashboard') }}">
+                <a class="sidebar-brand" href="{{ path('admin_home_index') }}">
                     <img src="{{ asset ('images/mon_logo.png') }}" alt="gaijin" class="logo" style="width:30px; height:30px; border-radius:5px">
                     <span class="align-middle">
                         GAIJIN
@@ -50,7 +50,7 @@
                 <ul class="sidebar-nav my-2">
 
                     <li class="sidebar-item active my-3">
-                        <a class="sidebar-link" href="{{ path('admin_dashboard') }}">
+                        <a class="sidebar-link" href="{{ path('admin_home_index') }}">
                             <i class="align-middle" data-feather="sliders"></i>
                             <span class="align-middle">
                                 Accueil
@@ -120,134 +120,6 @@
                                     <i class="align-middle" data-feather="layers"></i>
                                     <span class="align-middle">
                                         Utilisateurs
-                                                                                                                    
-                                                                            
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    {# FIN #}
-
-                    {# GESTION DES PAGES UTILISATEURS #}
-                    <li class="sidebar-item active my-3">
-                        <a href="#auth" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                            <i class="fas fa-palette"></i>
-                            <span class="align-middle">
-                                Gestion pages Utilisateurs
-                                                                                            
-                                                            
-                            </span>
-                        </a>
-                        <ul id="auth" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ path('admin_home_index') }}">
-                                    <i class="align-middle" data-feather="user"></i>
-                                    <span class="align-middle">
-                                        Accueil
-                                                                                                                    
-                                                                            
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ path('admin_category_home_index') }}">
-                                    <i class="align-middle" data-feather="user"></i>
-                                    <span class="align-middle">
-                                        Categories Accueil
-                                                                            
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ path('admin_contenus_accueil_index') }}">
-                                    <i class="align-middle" data-feather="user"></i>
-                                    <span class="align-middle">
-                                        Contenus Accueil
-                                                                            
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ path('admin_category_index') }}">
-                                    <i class="align-middle" data-feather="list"></i>
-                                    <span class="align-middle">
-                                        Categories des menus principaux
-                                                                                                                    
-                                                                            
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ path('admin_contenus_index') }}">
-                                    <i class="align-middle" data-feather="users"></i>
-                                    <span class="align-middle">
-                                        Categories des sous-menus
-                                                                                                                    
-                                                                            
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ path('admin_prefecture_index') }}">
-                                    <i class="align-middle" data-feather="users"></i>
-                                    <span class="align-middle">
-                                        Prefecture 
-                                                                                                                    
-                                                                            
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ path('admin_category_faq_index') }}">
-                                    <i class="align-middle" data-feather="users"></i>
-                                    <span class="align-middle">
-                                        Categories foires aux questions
-                                                                                                                    
-                                                                            
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ path('admin_faq_index') }}">
-                                    <i class="align-middle" data-feather="users"></i>
-                                    <span class="align-middle">
-                                        Contenus foires aux questions
-                                                                                                                    
-                                                                            
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    {# FIN #}
-
-                    {# GESTION DES PHOTOS ET VIDEOS #}
-                    <li class="sidebar-item active my-3">
-                        <a data-bs-target="#ui" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                            <i class="fas fa-folder"></i>
-                            <span class="align-middle">
-                                Gestion Photos / videos
-                                                                                            
-                                                            
-                            </span>
-                        </a>
-                        <ul id="ui" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ path('admin_photo_index') }}">
-                                    <i class="align-middle" data-feather="users"></i>
-                                    <span class="align-middle">
-                                        Gestion des photos
-                                                                                                                    
-                                                                            
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ path('admin_video_index') }}">
-                                    <i class="align-middle" data-feather="compass"></i>
-                                    <span class="align-middle">
-                                        Gestion des videos
                                                                                                                     
                                                                             
                                     </span>
@@ -349,7 +221,7 @@
                                         {% endif %}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="{{ path('profile') }}">
+                                        <a class="dropdown-item" href="#">
                                             <i class="align-middle me-1" data-feather="user"></i>
                                             Mon Compte
                                                                                                                                                         

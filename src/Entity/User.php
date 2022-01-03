@@ -139,6 +139,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @see UserInterface
+     */
+    public function getSalt(): ?string
+    {
+        return null;
+    }
+
+    /**
      * @see UserInterface
      */
     public function eraseCredentials()
@@ -195,6 +206,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setConfirmPassword($confirmPassword)
     {
         $this->confirmPassword = $confirmPassword;
+
+        return $this;
+    }
+
+    /**
+     * Get cette propriété sert à la mise en place d'un select ption pour le choix de rôle au niveau du
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Set cette propriété sert à la mise en place d'un select ption pour le choix de rôle au niveau du
+     *
+     * @return  self
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
 
         return $this;
     }
